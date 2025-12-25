@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/aegis
+    url: jdbc:postgresql://localhost:5050/aegis
     username: aegis
     password: aegis
   jpa:
