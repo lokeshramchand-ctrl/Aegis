@@ -1,44 +1,71 @@
 package com.aegis.auth.entity;
 
 import jakarta.persistence.*;
-import java.util.UUID;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "mfa_secrets")
 public class MfaSecret {
 
-  @Id
-  @GeneratedValue
-  private UUID id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  @Column(nullable = false)
-  private String userId;
+    @Column(nullable = false, unique = true)
+    private String userId;
 
-  @Column(nullable = false)
-  private String encryptedSecret;
+    @Column(nullable = false)
+    private String encryptedSecret;
 
-  @Enumerated(EnumType.STRING)
-  @Column(nullable = false)
-  private Status status;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Status status;
 
-  public enum Status {
-    PENDING,
-    ACTIVE,
-    REVOKED
-  }
+    @Column(nullable = false)
+    private LocalDateTime createdAt = LocalDateTime.now();
 
-  // Getters & Setters
-  public UUID getId() { return id; }
-  public void setId(UUID id) { this.id = id; }
+    public enum Status {
+        PENDING, ACTIVE, DISABLED
+    }
 
-  public String getUserId() { return userId; }
-  public void setUserId(String userId) { this.userId = userId; }
+    // Getters and Setters
+    public Long getId() {
+        return id;
+    }
 
-  public String getEncryptedSecret() { return encryptedSecret; }
-  public void setEncryptedSecret(String encryptedSecret) {
-    this.encryptedSecret = encryptedSecret;
-  }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-  public Status getStatus() { return status; }
-  public void setStatus(Status status) { this.status = status; }
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getEncryptedSecret() {
+        return encryptedSecret;
+    }
+
+    public void setEncryptedSecret(String encryptedSecret) {
+        this.encryptedSecret = encryptedSecret;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 }
