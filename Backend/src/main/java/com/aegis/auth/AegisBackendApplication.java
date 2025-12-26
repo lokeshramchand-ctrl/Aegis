@@ -1,4 +1,4 @@
-package com.aegis;
+package com.aegis.auth;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

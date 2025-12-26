@@ -3,7 +3,7 @@ package com.aegis.auth.service;
 import com.aegis.auth.dto.MfaEnrollResponse;
 import com.aegis.auth.entity.MfaSecret;
 import com.aegis.auth.entity.MfaSecret.Status;
-import com.aegis.auth.repository.MFASecretRepository;
+import com.aegis.auth.repository.MfaSecretRepository;
 import com.aegis.auth.util.QrCodeUtil;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +13,9 @@ import java.util.Base64;
 @Service
 public class MfaService {
 
-  private final MFASecretRepository repo;
+  private final MfaSecretRepository repo;
 
-  public MfaService(MFASecretRepository repo) {
+  public MfaService(MfaSecretRepository repo) {
     this.repo = repo;
   }
 
