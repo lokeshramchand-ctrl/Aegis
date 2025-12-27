@@ -31,6 +31,13 @@
 	</properties>
 	<dependencies>
 
+	<dependency>
+		<groupId>commons-codec</groupId>
+		<artifactId>commons-codec</artifactId>
+		<version>20041127.091804</version>
+	</dependency>
+
+
   <!-- Web -->
   <dependency>
     <groupId>org.springframework.boot</groupId>
