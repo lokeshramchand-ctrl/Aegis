@@ -5,6 +5,8 @@ import com.aegis.auth.entity.MfaSecret;
 import com.aegis.auth.entity.MfaSecret.Status;
 import com.aegis.auth.repository.MfaSecretRepository;
 import com.aegis.auth.util.QrCodeUtil;
+import com.aegis.auth.util.TotpUtil;
+
 import org.springframework.stereotype.Service;
 import org.apache.commons.codec.binary.Base32;
 import java.security.SecureRandom;
