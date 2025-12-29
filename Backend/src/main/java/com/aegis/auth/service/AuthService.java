@@ -1,16 +1,13 @@
-package com.aegis.auth.service;
-import com.aegis.auth.repository.UserRepository;
-import com.aegis.auth.entity.User;
 
-import org.springframework.stereotype.Service;
-
-import com.aegis.auth.controller.PasswordEncoder;
 import com.aegis.auth.dto.AuthResponse;
-import com.aegis.auth.service.AuthService;
-import com.aegis.auth.util.JWTUtil;
-import com.aegis.auth.repository.MfaSecretRepository;
+import com.aegis.auth.entity.User;
 import com.aegis.auth.entity.MfaSecret.Status;
-
+import com.aegis.auth.repository.MfaSecretRepository;
+import com.aegis.auth.repository.UserRepository;
+import com.aegis.auth.util.JWTUtil;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import com.aegis.auth.config.SecurityConfig;
 @Service
 public class AuthService {
 
@@ -18,6 +15,7 @@ public class AuthService {
   private final PasswordEncoder encoder;
   private final JWTUtil jwtService;
   private final MfaSecretRepository mfaRepo;
+
   public AuthService(UserRepository repo,
                      PasswordEncoder encoder,
                      JWTUtil jwtService,
@@ -27,6 +25,7 @@ public class AuthService {
     this.jwtService = jwtService;
     this.mfaRepo = mfaRepo;
   }
+
   public AuthResponse login(String email, String password) {
 
     User user = repo.findByEmail(email)
