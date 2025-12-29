@@ -1,6 +1,10 @@
 package com.aegis.auth.service;
 import com.aegis.auth.repository.UserRepository;
 import com.aegis.auth.entity.User;
+
+import org.springframework.stereotype.Service;
+
+import com.aegis.auth.controller.PasswordEncoder;
 import com.aegis.auth.dto.AuthResponse;
 import com.aegis.auth.service.AuthService;
 import com.aegis.auth.repository.MfaSecretRepository;
