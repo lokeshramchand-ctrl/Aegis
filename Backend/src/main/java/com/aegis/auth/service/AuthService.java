@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.aegis.auth.controller.PasswordEncoder;
 import com.aegis.auth.dto.AuthResponse;
 import com.aegis.auth.service.AuthService;
+import com.aegis.auth.util.JWTUtil;
 import com.aegis.auth.repository.MfaSecretRepository;
 import com.aegis.auth.entity.MfaSecret.Status;
 
@@ -15,11 +16,11 @@ public class AuthService {
 
   private final UserRepository repo;
   private final PasswordEncoder encoder;
-  private final JwtService jwtService;
+  private final JWTUtil jwtService;
   private final MfaSecretRepository mfaRepo;
   public AuthService(UserRepository repo,
                      PasswordEncoder encoder,
-                     JwtService jwtService,
+                     JWTUtil jwtService,
                      MfaSecretRepository mfaRepo) {
     this.repo = repo;
     this.encoder = encoder;

@@ -17,7 +17,7 @@ public class AuthController {
   }
 
   @PostMapping("/login")
-  public AuthResponse login(@RequestBody LoginRequest req) {
+  public AuthResponse login(@RequestBody AuthResponse req) {
     return authService.login(req.email(), req.password());
   }
 }
