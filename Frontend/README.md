@@ -289,7 +289,7 @@ Aegis is built with:
 
 ---
 
-## 🏁 Conclusion
+## Conclusion
 
 Aegis is not just an MFA demo — it is a full authentication platform foundation.
 
