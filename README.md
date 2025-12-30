@@ -1,7 +1,5 @@
-Here is the complete documentation in Markdown (`.md`) format, preserving your original structure and content exactly as provided.
 
-```markdown
-# 🔐 Aegis — Secure Authentication Platform
+# Aegis — Secure Authentication Platform
 
 Aegis is a modern authentication platform that provides Email & Password login, JWT-based sessions, and Time-based Multi-Factor Authentication (TOTP) using authenticator apps — built with security, clarity, and extensibility in mind.
 
@@ -9,7 +7,7 @@ Unlike standalone authenticator apps, Aegis combines backend-driven authenticati
 
 ---
 
-## 📌 Why Aegis?
+## Why Aegis?
 
 Authentication systems are often either:
 * **Too simple** — password-only login with weak security
@@ -20,7 +18,7 @@ Aegis solves this by treating authentication as a first-class platform.
 
 ---
 
-## 🚨 Problem
+## Problem
 
 Modern applications require strong authentication, but developers face several challenges:
 * Password-only authentication is insecure
@@ -34,7 +32,7 @@ As a result, systems become hard to scale, hard to audit, and hard to trust.
 
 ---
 
-## ✅ Solution
+## Solution
 
 Aegis provides a clean, backend-driven authentication flow:
 * Email + Password authentication with BCrypt hashing
@@ -47,15 +45,15 @@ Aegis provides a clean, backend-driven authentication flow:
 
 ---
 
-## ✨ Core Features
+## Core Features
 
-### 🔐 Authentication
+### Authentication
 * Email & password login
 * BCrypt password hashing
 * JWT token generation
 * MFA-aware login flow
 
-### 🔑 Multi-Factor Authentication (MFA)
+### Multi-Factor Authentication (MFA)
 * TOTP-based MFA (RFC 6238 compatible)
 * QR code enrollment
 * Google Authenticator / Aegis Authenticator compatible
@@ -63,12 +61,12 @@ Aegis provides a clean, backend-driven authentication flow:
 * 30-second rolling codes
 * MFA state management (PENDING → ACTIVE)
 
-### 📱 Client Support
+### Client Support
 * Flutter-based authenticator app
 * Web-based login & QR enrollment (Next.js)
 * API-driven flows
 
-### 🧱 Architecture
+### Architecture
 * Modular Spring Boot backend
 * Clean REST APIs
 * Database-backed MFA state
@@ -76,7 +74,7 @@ Aegis provides a clean, backend-driven authentication flow:
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```text
 Aegis/
@@ -175,32 +173,32 @@ Aegis/
 
 ---
 
-## 🔄 Authentication Flow
+## Authentication Flow
 
-### 1️⃣ Login
+### Login
 
 Email + Password → Backend Validation
 
-### 2️⃣ MFA Required?
+### MFA Required?
 
 If MFA ACTIVE → Prompt for OTP
 If not → Issue JWT
 
-### 3️⃣ MFA Enroll
+### MFA Enroll
 
 `/mfa/enroll` → QR Code → Authenticator App Scan
 
-### 4️⃣ MFA Confirm
+### MFA Confirm
 
 User enters OTP → `/mfa/confirm` → MFA Activated
 
-### 5️⃣ MFA Verify (Future Logins)
+### MFA Verify (Future Logins)
 
 OTP → `/mfa/verify` → JWT Issued
 
 ---
 
-## 📱 Flutter App (Authenticator)
+## Flutter App (Authenticator)
 
 The Flutter app acts as a secure OTP generator.
 
@@ -221,7 +219,7 @@ The Flutter app acts as a secure OTP generator.
 
 ---
 
-## 🌐 Web App (Next.js)
+## Web App (Next.js)
 
 The web app handles user-facing authentication flows.
 
@@ -240,7 +238,7 @@ The web app handles user-facing authentication flows.
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 ### Backend
 
@@ -266,7 +264,7 @@ The web app handles user-facing authentication flows.
 
 ---
 
-## 🔮 Future Enhancements (Not Implemented Yet)
+##  Future Enhancements (Not Implemented Yet)
 
 * **Redis:** OTP window cache & session TTL
 * **Kafka:** Auth events, audit logs
@@ -277,7 +275,7 @@ The web app handles user-facing authentication flows.
 
 ---
 
-## 🧠 Design Philosophy
+##  Design Philosophy
 
 Aegis is built with:
 
@@ -300,11 +298,3 @@ It demonstrates:
 3. Clean architecture
 4. Multi-client support (mobile + web)
 5. Scalability-first thinking
-
-**Suitable for:** Production apps, security-focused portfolios, and enterprise-grade systems.
-
-```
-
-Would you like me to help you create the `docker-compose.yaml` file to get these services running together?
-
-```
