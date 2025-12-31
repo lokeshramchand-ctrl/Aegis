@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,
-        fontFamily: 'Roboto', // Fallback to system sans-serif
+        useMaterial3: true,
       ),
       home: const OnboardingScreen(),
     );

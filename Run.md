@@ -1,5 +1,6 @@
 ### Run the Java Backend 
 
+cd backend
 ./mvnw clean spring-boot:run
 
 ### Docker Build and Run

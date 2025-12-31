@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
+
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
 
@@ -11,177 +12,77 @@ class OnboardingScreen extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: const Color(0xFF05080D),
+      backgroundColor: const Color(0xFF030507),
       body: Stack(
+        alignment: Alignment.center,
         children: [
-          // 1. Background Gradients/Shapes
+          // 1. Atmospheric Depth (Soft Ambient Glows)
           Positioned(
-            top: -100,
-            left: -50,
+            top: size.height * 0.1,
             child: Container(
-              width: size.width * 0.8,
-              height: size.width * 0.8,
+              width: size.width * 1.2,
+              height: size.height * 0.4,
               decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: const Color(0xFF14B8A6).withOpacity(0.08),
-              ),
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 80, sigmaY: 80),
-                child: Container(color: Colors.transparent),
+                gradient: RadialGradient(
+                  colors: [
+                    const Color(0xFF0D9488).withOpacity(0.12),
+                    Colors.transparent,
+                  ],
+                ),
               ),
             ),
           ),
           
+          // 2. Main Content Stack
           SafeArea(
             child: Column(
               children: [
-                // 2. Top Branding Section
-                Expanded(
-                  flex: 4,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      // Animated Logo Container
-                      Container(
-                        padding: const EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF0A0F18).withOpacity(0.8),
-                          borderRadius: BorderRadius.circular(24),
-                          border: Border.all(
-                            color: Colors.white.withOpacity(0.1),
-                            width: 1,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: const Color(0xFF14B8A6).withOpacity(0.1),
-                              blurRadius: 30,
-                              spreadRadius: 2,
-                            )
-                          ],
-                        ),
-                        child: const Icon(
-                          Icons.shield_outlined,
-                          size: 48,
-                          color: Color(0xFF2DD4BF),
-                        ),
+                const Spacer(flex: 2),
+                
+                // Hero Branding Section
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // The "Vault" Icon Container
+                    _buildPremiumLogo(),
+                    
+                    const SizedBox(height: 48),
+                    
+                    // Ultra-refined Typography
+                    const Text(
+                      'AEGIS',
+                      style: TextStyle(
+                        fontSize: 42,
+                        fontWeight: FontWeight.w200, // Thinner weight for elegance
+                        letterSpacing: 16.0,
+                        color: Colors.white,
                       ),
-                      const SizedBox(height: 32),
-                      const Text(
-                        'AEGIS',
-                        style: TextStyle(
-                          fontSize: 36,
-                          fontWeight: FontWeight.w900,
-                          letterSpacing: 8.0,
-                          color: Colors.white,
-                        ),
-                      ),
-                      const SizedBox(height: 12),
-                      Text(
-                        'Secure authentication. Verified by design.',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.white.withOpacity(0.5),
-                          fontWeight: FontWeight.w400,
-                          letterSpacing: 0.5,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                // 3. Feature Highlights
-                Expanded(
-                  flex: 4,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 32.0),
-                    child: Column(
-                      children: [
-                        _buildFeatureRow(
-                          icon: Icons.verified_user_outlined,
-                          title: 'Backend-verified MFA',
-                          description: 'Direct server-side validation for every request.',
-                        ),
-                        const SizedBox(height: 32),
-                        _buildFeatureRow(
-                          icon: Icons.qr_code_scanner_rounded,
-                          title: 'Secure QR-based enrollment',
-                          description: 'Encrypted handshake for seamless device pairing.',
-                        ),
-                        const SizedBox(height: 32),
-                        _buildFeatureRow(
-                          icon: Icons.visibility_off_outlined,
-                          title: 'Privacy-first architecture',
-                          description: 'Zero-knowledge encryption for your credentials.',
-                        ),
-                      ],
                     ),
-                  ),
+                    
+                    const SizedBox(height: 8),
+                    
+                    Text(
+                      'VERIFIED BY DESIGN',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: 4.0,
+                        color: Colors.white.withOpacity(0.3),
+                      ),
+                    ),
+                  ],
                 ),
 
-                // 4. Action Buttons
+                const Spacer(flex: 3),
+
+                // 3. Minimalist Action Section
                 Padding(
-                  padding: const EdgeInsets.all(32.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 40),
                   child: Column(
                     children: [
-                      // Primary Button
-                      Container(
-                        width: double.infinity,
-                        height: 58,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18),
-                          gradient: const LinearGradient(
-                            colors: [Color(0xFF0D9488), Color(0xFF14B8A6)],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: const Color(0xFF14B8A6).withOpacity(0.2),
-                              blurRadius: 15,
-                              offset: const Offset(0, 5),
-                            )
-                          ],
-                        ),
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.transparent,
-                            shadowColor: Colors.transparent,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18),
-                            ),
-                          ),
-                          child: const Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Get Started',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              SizedBox(width: 8),
-                              Icon(Icons.arrow_forward_rounded, size: 18, color: Colors.white),
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      // Secondary Button
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Learn how it works',
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white.withOpacity(0.4),
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
+                      _buildPrimaryButton(),
+                      const SizedBox(height: 24),
+                      _buildSecondaryButton(),
                     ],
                   ),
                 ),
@@ -193,57 +94,112 @@ class OnboardingScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildFeatureRow({
-    required IconData icon,
-    required String title,
-    required String description,
-  }) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
+  Widget _buildPremiumLogo() {
+    return Stack(
+      alignment: Alignment.center,
       children: [
+        // Outer Halo
         Container(
-          padding: const EdgeInsets.all(10),
+          width: 140,
+          height: 140,
           decoration: BoxDecoration(
-            color: const Color(0xFF0A0F18),
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(
-              color: Colors.white.withOpacity(0.05),
-              width: 1,
+            shape: BoxShape.circle,
+            gradient: RadialGradient(
+              colors: [
+                const Color(0xFF14B8A6).withOpacity(0.1),
+                Colors.transparent,
+              ],
             ),
           ),
-          child: Icon(
-            icon,
-            color: const Color(0xFF2DD4BF),
-            size: 22,
-          ),
         ),
-        const SizedBox(width: 20),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: const TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white,
-                  letterSpacing: 0.3,
+        // Glassmorphic Shield Base
+        Container(
+          width: 100,
+          height: 100,
+          decoration: BoxDecoration(
+            color: const Color(0xFF0A0F18).withOpacity(0.6),
+            borderRadius: BorderRadius.circular(32),
+            border: Border.all(
+              color: Colors.white.withOpacity(0.08),
+              width: 1.5,
+            ),
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(32),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+              child: const Center(
+                child: Icon(
+                  Icons.shield_rounded,
+                  size: 40,
+                  color: Color(0xFF2DD4BF),
                 ),
               ),
-              const SizedBox(height: 4),
-              Text(
-                description,
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.white.withOpacity(0.4),
-                  height: 1.4,
-                ),
-              ),
-            ],
+            ),
           ),
         ),
       ],
+    );
+  }
+
+  Widget _buildPrimaryButton() {
+    return Container(
+      width: double.infinity,
+      height: 64,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.white, // Inverted for high-end contrast
+        boxShadow: [
+          BoxShadow(
+            color: Colors.white.withOpacity(0.1),
+            blurRadius: 30,
+            offset: const Offset(0, 10),
+          )
+        ],
+      ),
+      child: ElevatedButton(
+        onPressed: () {},
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+          foregroundColor: Colors.black,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+        ),
+        child: const Text(
+          'Get Started',
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w700,
+            letterSpacing: 0.5,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSecondaryButton() {
+    return TextButton(
+      onPressed: () {},
+      style: TextButton.styleFrom(
+        foregroundColor: Colors.white.withOpacity(0.4),
+      ),
+      child: const Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            'Learn More',
+            style: TextStyle(
+              fontSize: 13,
+              letterSpacing: 1.0,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+          SizedBox(width: 4),
+          Icon(Icons.keyboard_arrow_down_rounded, size: 16),
+        ],
+      ),
     );
   }
 }
