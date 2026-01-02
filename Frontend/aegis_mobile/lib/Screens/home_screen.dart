@@ -1,10 +1,11 @@
-// ignore_for_file: unused_field, deprecated_member_use
+// ignore_for_file: unused_field, deprecated_member_use, use_build_context_synchronously
 
 import 'dart:async';
 import 'package:aegis_mobile/Screens/scanner_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:otp/otp.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -63,12 +64,22 @@ class _HomeScreenState extends State<HomeScreen> {
         Padding(
           padding: const EdgeInsets.only(right: 16),
           child: ElevatedButton(
-            onPressed: () {
-              // Action for adding a new OTP key
-  Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => const ScannerScreen()),
-  );            },
+            // Inside your Add Button logic
+onPressed: () async {
+  var status = await Permission.camera.request();
+  if (status.isGranted) {
+    final result = await Navigator.push(
+      context, 
+      MaterialPageRoute(builder: (context) => const ScannerScreen())
+    );
+    if (result != null) {
+      // Process the scanned OTP data
+      Navigator.pop(context); // Close the scanner and return to home
+    }
+  } else {
+    // Show a snackbar or dialog: "Camera permission is required"
+  }
+},
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFFF07127),
               shape: RoundedRectangleBorder(
