@@ -158,7 +158,10 @@ class OnboardingScreen extends StatelessWidget {
         ],
       ),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          // Navigate to the next onboarding step or main app
+          Navigator.pushNamed(context, '/lockscreen');
+        },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.transparent,
           shadowColor: Colors.transparent,
