@@ -145,19 +145,22 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // ================= SCANNER =================
 
-  Future<void> _openScanner() async {
-    final status = await Permission.camera.request();
-    if (!status.isGranted) return;
+Future<void> _openScanner() async {
+  final status = await Permission.camera.request();
+  if (!status.isGranted) return;
 
-    final result = await Navigator.push<OtpAccount>(
-      context,
-      MaterialPageRoute(builder: (_) => const ScannerScreen()),
-    );
+  final result = await Navigator.push<OtpAccount>(
+    context,
+    MaterialPageRoute(builder: (_) => const ScannerScreen()),
+  );
 
-    if (result != null) {
-      setState(() => _accounts.add(result));
-    }
+  if (result != null) {
+    setState(() {
+      _accounts.add(result);
+    });
   }
+}
+
 }
 
 // =======================================================
