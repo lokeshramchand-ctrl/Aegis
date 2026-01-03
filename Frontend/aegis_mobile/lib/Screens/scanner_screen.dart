@@ -82,19 +82,22 @@ class _ScannerScreenState extends State<ScannerScreen>
   // ---------------------------------------------------
   // SCAN HANDLER
   // ---------------------------------------------------
+void _handleScannedData(String data) async {
+  try {
+    final account = OtpAccount.fromOtpAuthUri(data);
 
-  void _handleScannedData(String data) {
-    try {
-      final account = OtpAccount.fromOtpAuthUri(data);
+    // Give Flutter one frame to settle after camera stop
+    await Future.delayed(const Duration(milliseconds: 150));
 
-      // SUCCESS → return result to HomeScreen
-      Future.microtask(() {
-        Navigator.pop(context, account);
-      });
-    } catch (_) {
-      _showInvalidQr();
-    }
+    if (!mounted) return;
+
+    Navigator.pop(context, account);
+
+  } catch (_) {
+    _showInvalidQr();
   }
+}
+
 
   void _showInvalidQr() async {
     ScaffoldMessenger.of(context).clearSnackBars();
