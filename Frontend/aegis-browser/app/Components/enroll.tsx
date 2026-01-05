@@ -380,10 +380,6 @@ export default function App() {
       <div ref={cardRef} className="aegis-card">
         {/* Left Visuals */}
         <div className="aegis-left">
-          <div className="secure-badge">
-            <div className="pulse-dot"></div>
-            <span className="badge-label">Aegis Secure</span>
-          </div>
 
           <div className="qr-frame">
             {qrCode ? (
@@ -463,10 +459,6 @@ export default function App() {
             </>
           )}
         </div>
-      </div>
-
-      <div style={{ position: 'fixed', bottom: 32, fontSize: 11, fontWeight: 700, color: 'var(--apple-grey)', letterSpacing: '0.4em', textTransform: 'uppercase', pointerEvents: 'none', opacity: 0.5 }}>
-        Aegis Security Protocol v4.0
       </div>
     </div>
   );
