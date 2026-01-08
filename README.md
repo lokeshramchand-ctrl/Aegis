@@ -299,3 +299,15 @@ It demonstrates:
 3. Clean architecture
 4. Multi-client support (mobile + web)
 5. Scalability-first thinking
+
+
+
+##Images
+
+ <p align="center">
+   <img src="/Frontend/Screenshots/mobile_homescreen.png" width="200" /> 
+   <img src="photo2.png" width="200" />
+   <img src="photo3.png" width="200" /> 
+ </p>
+
+
