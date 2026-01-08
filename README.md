@@ -305,7 +305,7 @@ It demonstrates:
 ##Images
 
  <p align="center">
-   <img src="/Frontend/Screenshots/mobile_homescreen.png" width="200" /> 
+   <img src="/Frontend/screenshots/Mobile_homescreen.png" width="200" /> 
    <img src="photo2.png" width="200" />
    <img src="photo3.png" width="200" /> 
  </p>
