@@ -1,14 +1,14 @@
 ![Profile Picture](./Frontend/aegis-browser/assets/Frame-20.png)
 
 
-# Aegis — Secure Authentication Platform
+# JaLock — Secure Authentication Platform
 
-Aegis is a modern authentication platform that provides Email & Password login, JWT-based sessions, and Time-based Multi-Factor Authentication (TOTP) using authenticator apps — built with security, clarity, and extensibility in mind.
+JaLock is a modern authentication platform that provides Email & Password login, JWT-based sessions, and Time-based Multi-Factor Authentication (TOTP) using authenticator apps — built with security, clarity, and extensibility in mind.
 Unlike standalone authenticator apps, Aegis combines backend-driven authentication logic with client-side MFA, making it suitable for real-world applications, enterprise systems, and security-focused products.
 
 ---
 
-## Why Aegis?
+## Why JaLock?
 
 Authentication systems are often either:
 * **Too simple** — password-only login with weak security
@@ -78,11 +78,11 @@ Aegis provides a clean, backend-driven authentication flow:
 ## Repository Structure
 
 ```text
-Aegis/
+JaLock/
 │
 ├── Backend/
 │   ├── auth-core/
-│   │   ├── src/main/java/com/aegis/auth/
+│   │   ├── src/main/java/com/jalock/auth/
 │   │   │   ├── controller/
 │   │   │   │   ├── AuthController.java
 │   │   │   │   ├── MfaController.java
@@ -117,7 +117,7 @@ Aegis/
 │   │   │   │   ├── QrCodeUtil.java
 │   │   │   │   └── TotpUtil.java
 │   │   │   │
-│   │   │   └── AegisApplication.java
+│   │   │   └── JaLockApplication.java
 │   │   │
 │   │   ├── src/main/resources/
 │   │   │   └── application.yml
@@ -145,7 +145,7 @@ Aegis/
 │   │   └── pubspec.yaml
 │
 ├── Web/
-│   ├── aegis-web/          # Next.js App
+│   ├── jalock-web/          # Next.js App
 │   │   ├── pages/
 │   │   │   ├── login.tsx
 │   │   │   ├── enroll.tsx
@@ -294,7 +294,7 @@ The web app handles user-facing authentication flows.
 
 ##  Design Philosophy
 
-Aegis is built with:
+JaLock is built with:
 
 * Explicit state transitions
 * Clear authentication contracts
@@ -306,7 +306,7 @@ Aegis is built with:
 
 ##  Conclusion
 
-Aegis is not just an MFA demo — it is a full authentication platform foundation.
+JaLock is not just an MFA demo — it is a full authentication platform foundation.
 
 It demonstrates:
 
